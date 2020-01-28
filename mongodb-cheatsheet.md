@@ -47,3 +47,39 @@ None of the filters passed to `$nor` must match for a document to be returned.
 ### Skip and Limit
 
 Skips `x` documents and limits to `y` documents.
+
+### More operators
+
+#### `$ne`
+
+`{ year: { $ne: 1994 } }` return all movies where the value for the `year` field is NOT EQUAL to `1994`.
+
+#### `$gt` `$gte`
+
+`{ year: { $gt: 1995 } }` return all movies where the value for the `year` field is GREATER THAN `1995`
+
+`{ year: { $gte: 1995 } }` return all movies where the value for the `year` field is GREATER THAN or EQUAL to `1995`
+
+#### `$lt` `$lte`
+
+`{ rate: { $lt: 8.5 } }` return all movies where the value for the `rate` field is LESS THAN `8.5`
+
+`{$and: [{ year: { $gte: 1990 } }, { year: { $lt: 2000 } }]}` return all movies where the `year` is >= `1990` and < `2000`.
+
+#### `$in`
+
+`{director: { $in: ["Lana Wachowski", "David Fincher", "Joel Coen"] } }` return all movies where the `director` is in an array ["Lana Wachowski", "David Fincher", "Joel Coen"]
+
+`{year: { $in: [1980, 1990, 2000] } }` return all movies where the value for `year` is in the `$in` array
+
+`{genre: { $in: ["Crime", "Drama"] } }` return all movies where the `genre` array HAS any of the values in the `$in` array
+
+#### `$nin`
+
+`{year: { $nin: [1980, 1990, 2000] } }` return all movies where the value for `year` is NOT in the `$nin` array
+
+`{genre: { $nin: ["Crime", "Drama"] } }` return all movies where the `genre` array doesn't have ANY of the values in the `$nin` array
+
+#### `$all`
+
+`{genre: { $all: ["Crime", "Drama"] } }` return all movies where the `genre` array has ALL of the values in the `$all` array
